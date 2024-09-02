@@ -2,8 +2,8 @@
 
 ## TODO
 
-- [ ] Make it deploy (docker on a VM/vercel)
-- [ ] Scaffold Basic UI with mock data
+- [x] Make it deploy (docker on a VM/vercel)
+- [x] Scaffold Basic UI with mock data
 - [ ] Actually set up a database (postgres)
 - [ ] Attach database to UI
 - [ ] Add authentication (clerk/next-auth)
