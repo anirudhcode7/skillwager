@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { LatestPost } from "~/app/_components/post";
 import { getServerAuthSession } from "~/server/auth";
+import { db } from "~/server/db";
 import { api, HydrateClient } from "~/trpc/server";
 
 const mockUrls = [
@@ -21,18 +22,23 @@ export default async function Home() {
   const session = await getServerAuthSession();
 
   void api.post.getLatest.prefetch();
+  const posts = await db.query.posts.findMany(); 
+  console.log("posts: ", posts)
 
   return (
-    // <HydrateClient>
+    <HydrateClient>
       <main className="">
         <div className="flex flex-wrap gap 4">
-          {[...mockImages, ...mockImages, ...mockImages].map((image) => (
-            <div key={image.id} className="w-48 p-4">
+          {posts.map((post) => (
+            <div key={post.id}>{post.name}</div>
+          ))}
+          {[...mockImages, ...mockImages, ...mockImages].map((image, index) => (
+            <div key={image.id + "-" + index} className="w-48 p-4">
               <img src={image.url}/>
             </div>
           ))}
         </div>
       </main>
-    // </HydrateClient>
+    </HydrateClient>
   );
 }
