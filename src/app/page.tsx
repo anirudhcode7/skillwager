@@ -1,9 +1,8 @@
-import Link from "next/link";
-
-import { LatestPost } from "~/app/_components/post";
-import { getServerAuthSession } from "~/server/auth";
+// import { getServerAuthSession } from "~/server/auth";
 import { db } from "~/server/db";
-import { api, HydrateClient } from "~/trpc/server";
+// import { api, HydrateClient } from "~/trpc/server";
+
+export const dynamic = "force-dynamic";
 
 const mockUrls = [
   "https://utfs.io/f/0a804ecf-0f8f-4bf1-b058-bcb78849c149-qky2u1.jpg",
@@ -18,15 +17,15 @@ const mockImages = mockUrls.map((url, index)=>({
 }))
 
 export default async function Home() {
-  const hello = await api.post.hello({ text: "from tRPC" });
-  const session = await getServerAuthSession();
+  // const hello = await api.post.hello({ text: "from tRPC" });
+  // const session = await getServerAuthSession();
 
-  void api.post.getLatest.prefetch();
+  // void api.post.getLatest.prefetch();
   const posts = await db.query.posts.findMany(); 
   console.log("posts: ", posts)
 
   return (
-    <HydrateClient>
+    // <HydrateClient>
       <main className="">
         <div className="flex flex-wrap gap 4">
           {posts.map((post) => (
@@ -39,6 +38,6 @@ export default async function Home() {
           ))}
         </div>
       </main>
-    </HydrateClient>
+    // </HydrateClient>
   );
 }
