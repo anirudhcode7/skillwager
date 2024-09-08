@@ -4,9 +4,9 @@
 
 - [x] Make it deploy (docker on a VM/vercel)
 - [x] Scaffold Basic UI with mock data
-- [ ] Tidy up build process
-- [ ] Actually set up a database (postgres)
-- [ ] Attach database to UI
+- [x] Tidy up build process
+- [x] Actually set up a database (postgres)
+- [x] Attach database to UI
 - [ ] Add authentication (clerk/next-auth)
 - [ ] Add image upload
 - [ ] Error management (sentry)
