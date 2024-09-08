@@ -2,7 +2,7 @@
 import { db } from "~/server/db";
 // import { api, HydrateClient } from "~/trpc/server";
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 const mockUrls = [
   "https://utfs.io/f/0a804ecf-0f8f-4bf1-b058-bcb78849c149-qky2u1.jpg",
